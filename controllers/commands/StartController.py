@@ -7,7 +7,7 @@ bot = BotWrapper.bot
 class StartController:
     @staticmethod
     def command_processing(chat_id):
-        from tgBotToStartapers.controllers.ChoiceSectorController import ChoiceSectorController
+        from controllers.ChoiceSectorController import ChoiceSectorController
 
         sti = open('images/hello_sticker.png', 'rb')
         bot.send_sticker(chat_id, sti)

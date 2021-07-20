@@ -1,5 +1,5 @@
-from tgBotToStartapers.keyboard import Keyboards
-from tgBotToStartapers.config.BotWrapper import BotWrapper
+from keyboard import Keyboards
+from config.BotWrapper import BotWrapper
 
 bot = BotWrapper.bot
 

@@ -1,18 +1,18 @@
 # CONTROLLERS
-from tgBotToStartapers.controllers.ServiceSectorController import ServiceSectorController
-from tgBotToStartapers.controllers.ProductSectorController import ProductSectorController
-from tgBotToStartapers.controllers.ChoiceSectorController import ChoiceSectorController
-from tgBotToStartapers.controllers.NotRecognizedMessageController import NotRecognizedMessageController
+from controllers.ServiceSectorController import ServiceSectorController
+from controllers.ProductSectorController import ProductSectorController
+from controllers.ChoiceSectorController import ChoiceSectorController
+from controllers.NotRecognizedMessageController import NotRecognizedMessageController
 
 # COMMANDS
-from tgBotToStartapers.controllers.commands.StartController import StartController
+from controllers.commands.StartController import StartController
 
 # # TELL_ABOUT
-from tgBotToStartapers.controllers.commands.tellAbout.AdvertisingController import AdvertisingController
-from tgBotToStartapers.controllers.commands.tellAbout.PatentsController import PatentsController
+from controllers.commands.tellAbout.AdvertisingController import AdvertisingController
+from controllers.commands.tellAbout.PatentsController import PatentsController
 
 # BOT
-from tgBotToStartapers.config.BotWrapper import BotWrapper
+from config.BotWrapper import BotWrapper
 
 bot = BotWrapper.bot
 

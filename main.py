@@ -1,10 +1,10 @@
 import telebot
 
-from tgBotToStartapers.router import text_messages_router, start_router_commands
-import tgBotToStartapers.config.BotWrapper as BotWrapper
+from router import text_messages_router, start_router_commands
+import config.BotWrapper as BotWrapper
 
 # decorators
-from tgBotToStartapers.decorators.catch_exepts import catch_excepts
+from decorators.catch_exepts import catch_excepts
 
 bot = BotWrapper.BotWrapper.bot
 

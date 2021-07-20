@@ -1,4 +1,4 @@
-import tgBotToStartapers.config.config as config
+import config.config as config
 import telebot
 
 

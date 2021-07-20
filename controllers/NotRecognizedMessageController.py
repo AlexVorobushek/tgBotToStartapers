@@ -1,5 +1,5 @@
 # bot
-from tgBotToStartapers.config.BotWrapper import BotWrapper
+from config.BotWrapper import BotWrapper
 
 bot = BotWrapper.bot
 

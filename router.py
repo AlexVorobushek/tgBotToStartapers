@@ -1,3 +1,5 @@
+import telebot
+
 # CONTROLLERS
 from controllers.ServiceSectorController import ServiceSectorController
 from controllers.ProductSectorController import ProductSectorController
@@ -30,22 +32,26 @@ def transform_text_to_func(text: str):
 
 def start_router_commands():
     @bot.message_handler(commands=['start'])
-    def start(message):
+    def start(message: telebot.types.Message):
+        print(f'new_user: {message.chat.id=}, {message.from_user.id=}, {message.from_user.username=}')
         StartController.command_processing(message.chat.id)
 
     @bot.message_handler(commands=['tell_about_advertising'])
-    def tell_about_advertising(message):
+    def tell_about_advertising(message: telebot.types.Message):
+        print(f'{message.from_user.id=}, tell_about_advertising')
         AdvertisingController.tell(message.chat.id)
 
     @bot.message_handler(commands=['tell_about_patents'])
-    def tell_about_patents(message):
+    def tell_about_patents(message: telebot.types.Message):
+        print(f'{message.from_user.id=}, tell_about_patents')
         PatentsController.tell(message.chat.id)
 
 
-def text_messages_router(chat_id, text):
+def text_messages_router(chat_id, text, user_id):
     transform_text_to_func(text)(
         chat_id=chat_id,
         text=text,
+        user_id=user_id
     )
 
 
@@ -60,6 +66,7 @@ class Router:
 
     @staticmethod
     def not_recognized_command(**kwargs):
+        print(f"{kwargs['user_id']}, not_recognized_command, {kwargs['text']=}")
         NotRecognizedMessageController.SendBotNotUnderstandMessage(kwargs['chat_id'])
 
     @staticmethod

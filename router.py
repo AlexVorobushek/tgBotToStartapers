@@ -13,6 +13,9 @@ from controllers.commands.StartController import StartController
 from controllers.commands.tellAbout.AdvertisingController import AdvertisingController
 from controllers.commands.tellAbout.PatentsController import PatentsController
 
+
+from config import config
+
 # BOT
 from config.BotWrapper import BotWrapper
 
@@ -33,17 +36,24 @@ def transform_text_to_func(text: str):
 def start_router_commands():
     @bot.message_handler(commands=['start'])
     def start(message: telebot.types.Message):
-        print(f'new_user: {message.chat.id=}, {message.from_user.id=}, {message.from_user.username=}')
+        bot.send_message(config.admin_chat_id,
+                         f'<i><b>for admin</b></i> new_user: {message.chat.id=}, {message.from_user.id=}, {message.from_user.username=}',
+                         parse_mode='HTML')
         StartController.command_processing(message.chat.id)
 
     @bot.message_handler(commands=['tell_about_advertising'])
     def tell_about_advertising(message: telebot.types.Message):
-        print(f'{message.from_user.id=}, tell_about_advertising')
+        bot.send_message(config.admin_chat_id,
+                         f'<i><b>for admin</b></i> {message.from_user.id=}, tell_about_advertising',
+                         parse_mode='HTML'
+                         )
         AdvertisingController.tell(message.chat.id)
 
     @bot.message_handler(commands=['tell_about_patents'])
     def tell_about_patents(message: telebot.types.Message):
-        print(f'{message.from_user.id=}, tell_about_patents')
+        bot.send_message(config.admin_chat_id,
+                         f'<i><b>for admin</b></i> {message.from_user.id=}, tell_about_patents',
+                         parse_mode='HTML')
         PatentsController.tell(message.chat.id)
 
 
@@ -66,7 +76,10 @@ class Router:
 
     @staticmethod
     def not_recognized_command(**kwargs):
-        print(f"{kwargs['user_id']}, not_recognized_command, {kwargs['text']=}")
+        bot.send_message(config.admin_chat_id,
+                         f"<i><b>for admin</b></i> {kwargs['user_id']}, not_recognized_command, {kwargs['text']=}",
+                         parse_mode='HTML'
+                         )
         NotRecognizedMessageController.SendBotNotUnderstandMessage(kwargs['chat_id'])
 
     @staticmethod
